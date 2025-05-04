@@ -3,9 +3,7 @@ const URL = require('url')
 const { createStudent, getAllStudent, updateStudentRecord,deleteStudent } = require('../model/studentmodel.js')
 
 const handleRequest = async (req, res) => {
-
     const { method, url } = req
-    console.log(URL.parse(url));
     if (method == "POST" && url == "/api/students") {
         let body = ''
         req.on('data', (chunk) => {
@@ -64,6 +62,10 @@ const handleRequest = async (req, res) => {
         res.writeHead(200, { "Content-Type": "application/json" })
         res.end(JSON.stringify(result))
         
+    }
+    else if(method=="GET" && url=="/")
+    {
+        res.end(JSON.stringify({message:"testing point"}))
     }
 
 }
